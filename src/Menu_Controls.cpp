@@ -9,6 +9,7 @@
 #include <SFML/System/Vector2.hpp>
 #include <string>
 #include "Assets.h"
+#include "FileIO.h"
 using namespace std;
 
 
@@ -254,35 +255,71 @@ void Menu_Controls::m_Cambiar_Tecla(Juego &j, Keyboard::Key &k){
 }
 
 void Menu_Controls::m_Guardar_Cambios(){
-	ofstream archi("Controles_p1.poo",ios::binary);
-	archi.write(reinterpret_cast<char*>(&Caminar_Izquierda_p1),sizeof(Keyboard::Key));
-	archi.write(reinterpret_cast<char*>(&Caminar_Derecha_p1),sizeof(Keyboard::Key));
-	archi.write(reinterpret_cast<char*>(&Saltar_p1),sizeof(Keyboard::Key));
-	archi.write(reinterpret_cast<char*>(&Atacar_p1),sizeof(Keyboard::Key));
-	archi.close();
-	
-	ofstream archiv("Controles_p2.poo",ios::binary);
-	archiv.write(reinterpret_cast<char*>(&Caminar_Izquierda_p2),sizeof(Keyboard::Key));
-	archiv.write(reinterpret_cast<char*>(&Caminar_Derecha_p2),sizeof(Keyboard::Key));
-	archiv.write(reinterpret_cast<char*>(&Saltar_p2),sizeof(Keyboard::Key));
-	archiv.write(reinterpret_cast<char*>(&Atacar_p2),sizeof(Keyboard::Key));
-	archiv.close();
+        auto archi = FileIO::open_ofstream_trunc("Controles_p1.poo", std::ios::binary | std::ios::trunc);
+        if (archi) {
+                archi.write(reinterpret_cast<char*>(&Caminar_Izquierda_p1),sizeof(Keyboard::Key));
+                archi.write(reinterpret_cast<char*>(&Caminar_Derecha_p1),sizeof(Keyboard::Key));
+                archi.write(reinterpret_cast<char*>(&Saltar_p1),sizeof(Keyboard::Key));
+                archi.write(reinterpret_cast<char*>(&Atacar_p1),sizeof(Keyboard::Key));
+        }
+
+        auto archiv = FileIO::open_ofstream_trunc("Controles_p2.poo", std::ios::binary | std::ios::trunc);
+        if (archiv) {
+                archiv.write(reinterpret_cast<char*>(&Caminar_Izquierda_p2),sizeof(Keyboard::Key));
+                archiv.write(reinterpret_cast<char*>(&Caminar_Derecha_p2),sizeof(Keyboard::Key));
+                archiv.write(reinterpret_cast<char*>(&Saltar_p2),sizeof(Keyboard::Key));
+                archiv.write(reinterpret_cast<char*>(&Atacar_p2),sizeof(Keyboard::Key));
+        }
 }
 
 void Menu_Controls::m_Leer_Controles(){
-	ifstream archi("Controles_p1.poo",ios::binary);
-	archi.read(reinterpret_cast<char*>(&Caminar_Izquierda_p1),sizeof(Keyboard::Key));
-	archi.read(reinterpret_cast<char*>(&Caminar_Derecha_p1),sizeof(Keyboard::Key));
-	archi.read(reinterpret_cast<char*>(&Saltar_p1),sizeof(Keyboard::Key));
-	archi.read(reinterpret_cast<char*>(&Atacar_p1),sizeof(Keyboard::Key));
-	archi.close();
-	
-	ifstream archiv("Controles_p2.poo",ios::binary);
-	archiv.read(reinterpret_cast<char*>(&Caminar_Izquierda_p2),sizeof(Keyboard::Key));
-	archiv.read(reinterpret_cast<char*>(&Caminar_Derecha_p2),sizeof(Keyboard::Key));
-	archiv.read(reinterpret_cast<char*>(&Saltar_p2),sizeof(Keyboard::Key));
-	archiv.read(reinterpret_cast<char*>(&Atacar_p2),sizeof(Keyboard::Key));
-	archiv.close();
+        bool wrote_defaults = false;
+
+        auto set_defaults_p1 = [&]() {
+                Caminar_Izquierda_p1 = Keyboard::Key::A;
+                Caminar_Derecha_p1 = Keyboard::Key::D;
+                Saltar_p1 = Keyboard::Key::Space;
+                Atacar_p1 = Keyboard::Key::S;
+                wrote_defaults = true;
+        };
+
+        auto archi = FileIO::open_ifstream_or_create("Controles_p1.poo", std::ios::binary);
+        if (!archi || archi.peek() == std::ifstream::traits_type::eof()) {
+                set_defaults_p1();
+        } else {
+                archi.read(reinterpret_cast<char*>(&Caminar_Izquierda_p1),sizeof(Keyboard::Key));
+                archi.read(reinterpret_cast<char*>(&Caminar_Derecha_p1),sizeof(Keyboard::Key));
+                archi.read(reinterpret_cast<char*>(&Saltar_p1),sizeof(Keyboard::Key));
+                archi.read(reinterpret_cast<char*>(&Atacar_p1),sizeof(Keyboard::Key));
+                if (!archi) {
+                        set_defaults_p1();
+                }
+        }
+
+        auto set_defaults_p2 = [&]() {
+                Caminar_Izquierda_p2 = Keyboard::Key::Left;
+                Caminar_Derecha_p2 = Keyboard::Key::Right;
+                Saltar_p2 = Keyboard::Key::Numpad4;
+                Atacar_p2 = Keyboard::Key::Numpad8;
+                wrote_defaults = true;
+        };
+
+        auto archiv = FileIO::open_ifstream_or_create("Controles_p2.poo", std::ios::binary);
+        if (!archiv || archiv.peek() == std::ifstream::traits_type::eof()) {
+                set_defaults_p2();
+        } else {
+                archiv.read(reinterpret_cast<char*>(&Caminar_Izquierda_p2),sizeof(Keyboard::Key));
+                archiv.read(reinterpret_cast<char*>(&Caminar_Derecha_p2),sizeof(Keyboard::Key));
+                archiv.read(reinterpret_cast<char*>(&Saltar_p2),sizeof(Keyboard::Key));
+                archiv.read(reinterpret_cast<char*>(&Atacar_p2),sizeof(Keyboard::Key));
+                if (!archiv) {
+                        set_defaults_p2();
+                }
+        }
+
+        if (wrote_defaults) {
+                m_Guardar_Cambios();
+        }
 }
 
 
