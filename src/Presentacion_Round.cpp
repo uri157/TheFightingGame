@@ -4,6 +4,7 @@
 #include <SFML/Audio/SoundBuffer.hpp>
 #include <SFML/Audio/Sound.hpp>
 #include <SFML/Graphics/RenderWindow.hpp>
+#include "Assets.h"
 
 using namespace std;
 using namespace sf;
@@ -11,7 +12,7 @@ using namespace sf;
 Presentacion_Round::Presentacion_Round(int n_round,int p1, int p2) {
 
 	//Inicializacion del texto que indica el numero de round
-	m_font.loadFromFile("MKtitle1.ttf");
+        m_font.loadFromFile(asset("fonts/MKtitle1.ttf"));
 	m_text.setFont(m_font);
 	m_text.setPosition(700,200);
 	m_text.setCharacterSize(200);
@@ -19,7 +20,7 @@ Presentacion_Round::Presentacion_Round(int n_round,int p1, int p2) {
 	m_text.setString("Round "+to_string(n_round));
 	
 	//Inicializacion del "sonido" correspondiente al anuncio del round por el presentador
-	round_announcer_effect_soundbuffer.loadFromFile("Round_"+to_string(n_round)+"_sound_effect.wav");
+        round_announcer_effect_soundbuffer.loadFromFile(asset("audio/music/Round_"+to_string(n_round)+"_sound_effect.wav"));
 	round_announcer_effect_sound.setBuffer(round_announcer_effect_soundbuffer);
 	
 
@@ -33,7 +34,7 @@ Presentacion_Round::Presentacion_Round(int n_round,int p1, int p2) {
 		luchador_p1.setCharacterSize(200);
 		luchador_p1.setColor({255,50,50});
 		luchador_p1.setString("Kratos Wins");
-		wins_effect_soundbuffer_p1.loadFromFile("Kratos_wins_sound_effect.wav");
+                wins_effect_soundbuffer_p1.loadFromFile(asset("audio/music/Kratos_wins_sound_effect.wav"));
 		wins_effect_sound_p1.setBuffer(wins_effect_soundbuffer_p1);
 		break;
 	case 2://Para el codigo de luchador 1 se sabe por la leyenda expresada en la cabezera de la clase "Players_selected" se sabe es "Sub Zero"
@@ -42,7 +43,7 @@ Presentacion_Round::Presentacion_Round(int n_round,int p1, int p2) {
 		luchador_p1.setCharacterSize(200);
 		luchador_p1.setColor({255,50,50});
 		luchador_p1.setString("Sub Zero Wins");
-		wins_effect_soundbuffer_p1.loadFromFile("Sub_Zero_wins_sound_effect.wav");
+                wins_effect_soundbuffer_p1.loadFromFile(asset("audio/music/Sub_Zero_wins_sound_effect.wav"));
 		wins_effect_sound_p1.setBuffer(wins_effect_soundbuffer_p1);
 		break;
 	default:
@@ -57,7 +58,7 @@ Presentacion_Round::Presentacion_Round(int n_round,int p1, int p2) {
 		luchador_p2.setCharacterSize(200);
 		luchador_p2.setColor({255,50,50});
 		luchador_p2.setString("Kratos Wins");
-		wins_effect_soundbuffer_p2.loadFromFile("Kratos_wins_sound_effect.wav");
+                wins_effect_soundbuffer_p2.loadFromFile(asset("audio/music/Kratos_wins_sound_effect.wav"));
 		wins_effect_sound_p2.setBuffer(wins_effect_soundbuffer_p2);
 		break;
 	case 2://Para el codigo de luchador 2 se sabe por la leyenda expresada en la cabezera de la clase "Players_selected" se sabe es "Sub Zero"
@@ -66,7 +67,7 @@ Presentacion_Round::Presentacion_Round(int n_round,int p1, int p2) {
 		luchador_p2.setCharacterSize(200);
 		luchador_p2.setColor({255,50,50});
 		luchador_p2.setString("Sub Zero Wins");
-		wins_effect_soundbuffer_p2.loadFromFile("Sub_Zero_wins_sound_effect.wav");
+                wins_effect_soundbuffer_p2.loadFromFile(asset("audio/music/Sub_Zero_wins_sound_effect.wav"));
 		wins_effect_sound_p2.setBuffer(wins_effect_soundbuffer_p2);
 		break;
 	default:

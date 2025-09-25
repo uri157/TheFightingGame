@@ -3,6 +3,7 @@
 #include <SFML/Graphics/Sprite.hpp>
 #include <SFML/Graphics/RenderWindow.hpp>
 #include <SFML/System/Clock.hpp>
+#include "Assets.h"
 
 
 #include <iostream>
@@ -14,18 +15,18 @@ using namespace sf;
 Healt_Bar::Healt_Bar(int p1, int p2) {
 	//Inicializacion de texturas y sprites correspondientes a las barras de vida
 	for(int i=0;i<2;i++) {  
-	Healt_Bar_Texture[i].loadFromFile("health_bar_"+to_string(i)+".png");
+        Healt_Bar_Texture[i].loadFromFile(asset("sprites/health_bar_"+to_string(i)+".png"));
 	Healt_Bar_Player_1_Sprite[i].setTexture(Healt_Bar_Texture[i]);
 	Healt_Bar_Player_2_Sprite[i].setTexture(Healt_Bar_Texture[i]);
 	};
 	
 	//Inicializacion de texturas, sprites y textos correspondientes al reloj
-	clock_background_texture.loadFromFile("Life_bar_clock_background.png");
+        clock_background_texture.loadFromFile(asset("sprites/Life_bar_clock_background.png"));
 	clock_background_sprite.setTexture(clock_background_texture);
 	clock_background_sprite.setOrigin(27,26);
 	clock_background_sprite.setScale(2,2);
 	clock_background_sprite.setPosition(950,110);
-	text_font.loadFromFile("MKtitle1.ttf");
+        text_font.loadFromFile(asset("fonts/MKtitle1.ttf"));
 	clock_text.setFont(text_font);
 	clock_text.setCharacterSize(40);
 	clock_text.setPosition(925,80);

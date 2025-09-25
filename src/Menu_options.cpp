@@ -7,6 +7,7 @@
 #include "Pantalla_principal.h"
 #include "Menu_Inicio.h"
 #include "Menu_Controls.h"
+#include "Assets.h"
 
 using namespace std;
 using namespace sf;
@@ -14,13 +15,13 @@ using namespace sf;
 Menu_options::Menu_options() {
 	cantidad_de_imagenes=2;
 	for(int i=0;i<cantidad_de_imagenes;i++)  { 
-		menu_textura[i].loadFromFile("Menu_options_"+to_string(i)+".png");
+		menu_textura[i].loadFromFile(asset("sprites/Menu_options_"+to_string(i)+".png"));
 		menu_sprite[i].setTexture(menu_textura[i]);
 		menu_sprite[i].setPosition(700,i+200);
 	};
 	menu_sprite_principal=&menu_sprite[0];
 	boton_seleccionado=0;
-	Menu_Background_textura.loadFromFile("Menu_Options_Background.jpg");
+	Menu_Background_textura.loadFromFile(asset("backgrounds/Menu_Options_Background.jpg"));
 	Menu_Background_sprite.setTexture(Menu_Background_textura);
 }
 

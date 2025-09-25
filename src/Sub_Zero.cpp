@@ -9,13 +9,14 @@
 #include "Controles_Player_1.h"
 #include <SFML/Graphics/Text.hpp>
 #include <iostream>
+#include "Assets.h"
 using namespace std;
 using namespace sf;
 
 Sub_Zero::Sub_Zero(int player_1_o_2):Personaje_1_escena_fighting(player_1_o_2,"Sub_Zero") { //Aqui recibe como informacion si sera Player_1 o Player_2 
 	//Inicializa la bola de hielo del ataque de sub zero orientada hacia izquierda y derecha
-	for(int i=0;i<2;i++) {
-		Sub_Zero_ice_ball_texture[i].loadFromFile("Sub_Zero_ice_ball_"+to_string(i)+".png");
+        for(int i=0;i<2;i++) {
+                Sub_Zero_ice_ball_texture[i].loadFromFile(asset("sprites/Sub_Zero_ice_ball_"+to_string(i)+".png"));
 		Sub_Zero_ice_ball_sprite[i].setTexture(Sub_Zero_ice_ball_texture[i]);
 		Sub_Zero_ice_ball_sprite[i].setScale(5,5);
 	}
@@ -23,11 +24,11 @@ Sub_Zero::Sub_Zero(int player_1_o_2):Personaje_1_escena_fighting(player_1_o_2,"S
 	Sub_Zero_pointer_ice_ball_sprite=&Sub_Zero_ice_ball_sprite[0];
 	
 	//Sonido
-	attacking_effect_soundbuffer.loadFromFile("Sub_Zero_attack_sound_effect.wav");
+        attacking_effect_soundbuffer.loadFromFile(asset("audio/music/Sub_Zero_attack_sound_effect.wav"));
 	attacking_effect_sound.setBuffer(attacking_effect_soundbuffer);
-	jumping_effect_soundbuffer.loadFromFile("Sub_Zero_jumping_sound_effect.wav");
+        jumping_effect_soundbuffer.loadFromFile(asset("audio/music/Sub_Zero_jumping_sound_effect.wav"));
 	jumping_effect_sound.setBuffer(jumping_effect_soundbuffer);
-	get_hit_effect_soundbuffer.loadFromFile("Sub_Zero_get_hit_sound_effect.wav");
+        get_hit_effect_soundbuffer.loadFromFile(asset("audio/music/Sub_Zero_get_hit_sound_effect.wav"));
 	get_hit_effect_sound.setBuffer(get_hit_effect_soundbuffer);
 
 	

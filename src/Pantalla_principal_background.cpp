@@ -2,6 +2,7 @@
 #include "InfoJugadores.h"
 #include <string>
 #include <SFML/Graphics/RectangleShape.hpp>
+#include "Assets.h"
 using namespace std;
 using namespace sf;
 
@@ -9,12 +10,12 @@ Pantalla_principal_background::Pantalla_principal_background():rectangulo(Vector
 	//SE SETEAN TODOS LOS SPRITES, TEXTURES, ETC PARA LUEGO DIBUJARLOS EN LA CLASE DRAW//
 	
 	//FONDO DE PANTALLA
-	Pantalla_principal_background_texture.loadFromFile("menu_background.jpg");
+        Pantalla_principal_background_texture.loadFromFile(asset("backgrounds/menu_background.jpg"));
 	Pantalla_principal_background_sprite.setTexture(Pantalla_principal_background_texture);
 	Pantalla_principal_background_sprite.setPosition(0, 0);
 	
 	//HISTORIAL DE JUGADORES
-	m_font.loadFromFile("MKtitle1.ttf");
+        m_font.loadFromFile(asset("fonts/MKtitle1.ttf"));
 	Nombre_Player_1_Text.setFont(m_font);
 	Nombre_Player_1_Text.setPosition(70,10);
 	Nombre_Player_1_Text.setCharacterSize(50);

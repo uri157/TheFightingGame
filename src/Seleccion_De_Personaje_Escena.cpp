@@ -6,6 +6,7 @@
 #include "Fighting_Escena.h"
 #include "Pantalla_principal.h"
 #include "Menu_Seleccion_Personaje.h"
+#include "Assets.h"
 
 #include <iostream>
 using namespace std;
@@ -14,31 +15,31 @@ using namespace sf;
 Seleccion_De_Personaje_Escena::Seleccion_De_Personaje_Escena():battleground("mkbattleground.png") {
 
 	//fotos grandes
-	Personajes_Texturas[0].loadFromFile("Kratos_Seleccion_De_Personaje.png");
-	Personajes_Texturas[1].loadFromFile("Sub_Zero_Seleccion_De_Personaje.png");
+	Personajes_Texturas[0].loadFromFile(asset("sprites/Kratos_Seleccion_De_Personaje.png"));
+	Personajes_Texturas[1].loadFromFile(asset("sprites/Sub_Zero_Seleccion_De_Personaje.png"));
 	Personajes_Sprites[0].setTexture(Personajes_Texturas[0]);
 	Personajes_Sprites[1].setTexture(Personajes_Texturas[1]);
 	
-	//iconos pequeños izquierda
-	Personajes_Seleccion_Texturas_Izquierda[0].loadFromFile("Kratos_Seleccion.png");
-	Personajes_Seleccion_Texturas_Izquierda[1].loadFromFile("Sub_Zero_Seleccion.png");
+	//iconos pequeos izquierda
+	Personajes_Seleccion_Texturas_Izquierda[0].loadFromFile(asset("sprites/Kratos_Seleccion.png"));
+	Personajes_Seleccion_Texturas_Izquierda[1].loadFromFile(asset("sprites/Sub_Zero_Seleccion.png"));
 	Personajes_Seleccion_Sprites_Izquierda[0].setTexture(Personajes_Seleccion_Texturas_Izquierda[0]);
 	Personajes_Seleccion_Sprites_Izquierda[1].setTexture(Personajes_Seleccion_Texturas_Izquierda[1]);
 	
-	//iconos pequeños derecha
-	Personajes_Seleccion_Texturas_Derecha[0].loadFromFile("Kratos_Seleccion.png");
-	Personajes_Seleccion_Texturas_Derecha[1].loadFromFile("Sub_Zero_Seleccion.png");
+	//iconos pequeos derecha
+	Personajes_Seleccion_Texturas_Derecha[0].loadFromFile(asset("sprites/Kratos_Seleccion.png"));
+	Personajes_Seleccion_Texturas_Derecha[1].loadFromFile(asset("sprites/Sub_Zero_Seleccion.png"));
 	Personajes_Seleccion_Sprites_Derecha[0].setTexture(Personajes_Seleccion_Texturas_Derecha[0]);
 	Personajes_Seleccion_Sprites_Derecha[1].setTexture(Personajes_Seleccion_Texturas_Derecha[1]);
 	
 	//Recuadros de seleccion
-	Recuadros_Seleccion_Texturas[0].loadFromFile("Recuadro_Seleccion_p1.png");
-	Recuadros_Seleccion_Texturas[1].loadFromFile("Recuadro_Seleccion_p2.png");
+	Recuadros_Seleccion_Texturas[0].loadFromFile(asset("sprites/Recuadro_Seleccion_p1.png"));
+	Recuadros_Seleccion_Texturas[1].loadFromFile(asset("sprites/Recuadro_Seleccion_p2.png"));
 	Recuadros_Seleccion_Sprites[0].setTexture(Recuadros_Seleccion_Texturas[0]);
 	Recuadros_Seleccion_Sprites[1].setTexture(Recuadros_Seleccion_Texturas[1]);
 	
 	//Cartel
-	m_font.loadFromFile("MKtitle1.ttf");
+	m_font.loadFromFile(asset("fonts/MKtitle1.ttf"));
 	Escape_Text.setFont(m_font);
 	Escape_Text.setPosition(890,1000);
 	Escape_Text.setCharacterSize(30);

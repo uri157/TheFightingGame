@@ -8,6 +8,7 @@
 #include <fstream>
 #include <SFML/System/Vector2.hpp>
 #include <string>
+#include "Assets.h"
 using namespace std;
 
 
@@ -28,17 +29,17 @@ Menu_Controls::Menu_Controls():pos_attack_text_p1(612,274),pos_jump_text_p1(614,
 	
 	
 	for(int i=0;i<10;i++) { 
-		menu_textura[i].loadFromFile("Menu_Controls_Sprite_"+to_string(i)+".png");
+		menu_textura[i].loadFromFile(asset("sprites/Menu_Controls_Sprite_"+to_string(i)+".png"));
 		menu_sprite[i].setTexture(menu_textura[i]);
 	}
 	InfoJugadores Info_J;
 	
 	
-	menu_background_textura.loadFromFile("Menu_Controls_Background.jpg");
+	menu_background_textura.loadFromFile(asset("backgrounds/Menu_Controls_Background.jpg"));
 	menu_background_sprite.setTexture(menu_background_textura);
 	
 	
-	m_font.loadFromFile("MKtitle1.ttf");
+	m_font.loadFromFile(asset("fonts/MKtitle1.ttf"));
 	text_nombre_player_1.setFont(m_font);
 	text_nombre_player_1.setPosition(37,72);
 	text_nombre_player_1.setCharacterSize(100);
@@ -297,7 +298,7 @@ void Menu_Controls::m_Setear_Nombre_Teclas_En_Pantalla(Vector2f posicion, Keyboa
 void Menu_Controls::m_CentrarTexto(Text &texto, Vector2f punto) {
 
 
-	// Obtiene el tamaño del texto
+	// Obtiene el tamao del texto
 	FloatRect bounds = texto.getLocalBounds();
 	
 	
@@ -311,20 +312,20 @@ void Menu_Controls::m_CentrarTexto(Text &texto, Vector2f punto) {
 }
 
 void Menu_Controls::m_Ajustar_Tamano_Texto(Text &texto) {
-	// Define el tamaño máximo y mínimo del texto
+	// Define el tamao mximo y mnimo del texto
 	int tamanoMaximo = 80;
 	int tamanoMinimo = 35;
 	
 	// Obtiene la longitud del texto actual
 	int longitud = texto.getString().getSize();
 	
-	// Calcula el nuevo tamaño del texto basado en la longitud
+	// Calcula el nuevo tamao del texto basado en la longitud
 	int nuevoTamano = tamanoMaximo - longitud*7;
 	
-	// Limita el tamaño del texto entre el máximo y el mínimo
+	// Limita el tamao del texto entre el mximo y el mnimo
 	nuevoTamano = max(tamanoMinimo, min(tamanoMaximo, nuevoTamano));
 	
-	// Establece el nuevo tamaño del texto
+	// Establece el nuevo tamao del texto
 	texto.setCharacterSize(nuevoTamano);
 }
 
@@ -378,7 +379,7 @@ string Menu_Controls:: m_Convertidor_Key_String(Keyboard::Key k) {
 	case Keyboard::Key::RShift: s = "Shift der"; break;
 	case Keyboard::Key::RAlt: s = "Alt der"; break;
 	case Keyboard::Key::RSystem: s = "Sist der"; break;
-	case Keyboard::Key::Menu: s = "Menú"; break;
+	case Keyboard::Key::Menu: s = "Men"; break;
 	case Keyboard::Key::LBracket: s = "["; break;
 	case Keyboard::Key::RBracket: s = "]"; break;
 	case Keyboard::Key::SemiColon: s = ";"; break;
@@ -394,8 +395,8 @@ string Menu_Controls:: m_Convertidor_Key_String(Keyboard::Key k) {
 	case Keyboard::Key::Return: s = "Enter"; break;
 	case Keyboard::Key::BackSpace: s = "Retroceso"; break;
 	case Keyboard::Key::Tab: s = "Tab"; break;
-	case Keyboard::Key::PageUp: s = "Pág ar"; break;
-	case Keyboard::Key::PageDown: s = "Pág ab"; break;
+	case Keyboard::Key::PageUp: s = "Pg ar"; break;
+	case Keyboard::Key::PageDown: s = "Pg ab"; break;
 	case Keyboard::Key::End: s = "Fin"; break;
 	case Keyboard::Key::Home: s = "Inicio"; break;
 	case Keyboard::Key::Insert: s = "Insert"; break;

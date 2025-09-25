@@ -3,11 +3,12 @@
 #include "Fighting_Escena.h"
 #include "Pantalla_principal.h"
 #include "Seleccion_De_Personaje_Escena.h"
+#include "Assets.h"
 
 Menu_Pause::Menu_Pause():booleano_nulo(nullptr){
 	cantidad_de_imagenes=2;
-	for(int i=0;i<cantidad_de_imagenes;i++)  { 
-		menu_textura[i].loadFromFile("Menu_Pause_"+to_string(i)+".png");
+        for(int i=0;i<cantidad_de_imagenes;i++)  {
+                menu_textura[i].loadFromFile(asset("sprites/Menu_Pause_"+to_string(i)+".png"));
 		menu_sprite[i].setTexture(menu_textura[i]);
 		menu_sprite[i].setPosition(700,i+350);
 	};
