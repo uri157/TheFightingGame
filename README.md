@@ -3,7 +3,7 @@
 > Final project for **Object-Oriented Programming** — my first programming course at university.
 > This was my **first real project** beyond classroom practice exercises.
 
-![MainMenu](screenshot-main-menu.png)
+![MainMenu](docs/screenshot-main-menu.png)
 
 ## 🎮 Overview
 
