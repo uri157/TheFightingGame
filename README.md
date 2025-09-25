@@ -1,39 +1,36 @@
-Aquí tienes un **README.md** pensado para GitHub y para enlazar en tu CV. Está escrito en tono profesional, explica el contexto académico, y deja claras las instrucciones de build/ejecución.
+Here’s a clean, English **README.md** with your screenshots correctly referenced (make sure those files exist at the exact paths and casing shown):
 
 ---
 
 # The Fighting Game (C++ / SFML)
 
-> Proyecto final de la asignatura **Programación Orientada a Objetos** (mi primera materia de programación en la carrera).
-> Este fue **mi primer proyecto “real”**: lo primero que construí en código fuera de los ejercicios de clase.
+> Final project for **Object-Oriented Programming** — my first programming course at university.
+> This was my **first real project** beyond classroom practice exercises.
 
-![Main menu](docs/screenshot-main-menu.png)
+![MainMenu](screenshot-main-menu.png)
 
+## 🎮 Overview
 
----
+A **2D fighting game** built in C++ with **SFML** featuring:
 
-## 🎮 Descripción
+* Main menu (New Game / Options / Quit)
+* Character selection
+* HUD / health bars, rounds, and sound effects
+* Animated sprites (idle, walk, attack, jump, get hit, win/lose)
+* Music/SFX for menus and battles
 
-Un **juego de pelea 2D** hecho en C++ con **SFML**. Incluye:
-
-* Menú principal (New Game / Options / Quit)
-* Selección de personajes
-* HUD/health bars, rounds y efectos de sonido
-* Sprites animados (idle, walk, attack, jump, get hit, win/lose)
-* Música/FX en menús y en combate
-
-El objetivo principal del proyecto fue practicar **clases**, **encapsulamiento**, **estados/escenas**, y el manejo de **recursos** (imágenes, fuentes, audio) en una aplicación gráfica.
+The core learning goals were practicing **classes**, **encapsulation**, **state/scene management**, and **resource loading** (images, fonts, audio) in a graphical application.
 
 ---
 
-## 🧱 Stack & requisitos
+## 🧱 Tech Stack & Requirements
 
-* **Lenguaje:** C++17
-* **Librería:** [SFML 2.5+](https://www.sfml-dev.org/) (graphics, window, system, audio)
+* **Language:** C++17
+* **Library:** [SFML 2.5+](https://www.sfml-dev.org/) (graphics, window, system, audio)
 * **Build system:** CMake
-* **IDE recomendado:** Visual Studio Code (con CMake Tools)
+* **Recommended IDE:** Visual Studio Code (with CMake Tools)
 
-**Ubuntu/Debian (paquetes):**
+**Ubuntu/Debian setup:**
 
 ```bash
 sudo apt update
@@ -42,7 +39,7 @@ sudo apt install -y build-essential cmake gdb libsfml-dev
 
 ---
 
-## 📦 Estructura del proyecto
+## 📦 Project Structure
 
 ```
 .
@@ -53,35 +50,35 @@ sudo apt install -y build-essential cmake gdb libsfml-dev
 │  ├─ backgrounds/
 │  ├─ fonts/
 │  ├─ sprites/
-│  └─ data/                # archivos .poo / .txt que persisten estado
+│  └─ data/                # .poo / .txt files for persisted state
 ├─ include/
-│  ├─ Assets.h             # helper de rutas: asset("subcarpeta/archivo")
-│  └─ …                    # headers del juego
-├─ src/                    # código fuente del juego
-├─ .vscode/                # config para F5 (opcional)
+│  ├─ Assets.h             # path helper: asset("subfolder/file")
+│  └─ …                    # game headers
+├─ src/                    # game sources
+├─ .vscode/                # F5 run/debug config (optional)
 ├─ CMakeLists.txt
 └─ README.md
 ```
 
-> El juego usa un helper (`include/Assets.h`) para cargar recursos desde `assets/...`.
-> En runtime, CMake copia `assets/` a `build/assets`, por lo que las rutas funcionan al ejecutar desde `build/`.
+> The game uses `include/Assets.h` to load resources from `assets/...`.
+> At runtime, CMake copies `assets/` into `build/assets`, so relative paths work when running from `build/`.
 
 ---
 
-## 🛠️ Compilar y ejecutar
+## 🛠️ Build & Run
 
-### Opción 1 — VS Code
+### Option 1 — VS Code
 
-1. Instalar extensiones: **C/C++**, **CMake**, **CMake Tools**.
-2. Abrir la carpeta del repo en VSCode y confiar en el workspace.
-3. En la barra inferior: **Select a Kit** → GCC.
+1. Install extensions: **C/C++**, **CMake**, **CMake Tools**.
+2. Open the repo folder in VS Code and trust the workspace.
+3. Bottom status bar: **Select a Kit** → GCC.
 4. **Configure** → **Build**.
 5. **Run and Debug** → *Run TheFightingGame (GDB)* → **F5**.
 
-### Opción 2 — Terminal
+### Option 2 — Terminal
 
 ```bash
-# desde la raíz del proyecto
+# from the project root
 mkdir -p build
 cd build
 cmake ..
@@ -91,50 +88,50 @@ cmake --build .
 
 ---
 
-## ⌨️ Controles
+## ⌨️ Controls
 
-Los controles se pueden ver dentro del juego (menú Options) y/o en `assets/data/Menu_Referencia_Botones.txt`.
+Controls are shown in-game (Options menu) and/or in `assets/data/Menu_Referencia_Botones.txt`.
 
-> Nota: algunos bindings se leen/guardan en `assets/data/*.poo`.
-
----
-
-## 🗂️ Datos persistentes
-
-El juego lee/escribe archivos en `assets/data/`:
-
-* `Controles_p1.poo`, `Controles_p2.poo` (controles por jugador)
-* `Historial.poo` (resultados)
-* `InfoPublicaJugadores.txt` (datos visibles en pantalla)
-
-Se crean automáticamente si no existen.
+> Note: some bindings are read/written under `assets/data/*.poo`.
 
 ---
 
-## 📸 Capturas (opcional)
+## 🗂️ Persisted Data
 
-* `docs/screenshot-pj-choosing.png`
-* `docs/screenshot-fight.png`
-* `docs/controls-menu.png`
+The game reads/writes data under `assets/data/`:
 
-> Sube tus propias capturas a la carpeta `docs/` y se verán en el README.
+* `Controles_p1.poo`, `Controles_p2.poo` (per-player controls)
+* `Historial.poo` (results/history)
+* `InfoPublicaJugadores.txt` (values shown on screen)
 
----
-
-## 🧭 Estado del código
-
-Este repo **preserva la lógica original** del proyecto (primer trabajo de la carrera) y organiza solo lo necesario para compilar y ejecutar de forma moderna:
-
-* Estructura de carpetas (`assets/`, `src/`, `include/`)
-* CMake + configuración de VSCode
-* Helper de rutas para recursos (`Assets.h`)
-
+Files are created automatically if missing.
 
 ---
 
+## 📸 Screenshots
 
-## 🏷️ Licencia / Créditos
 
-Proyecto académico sin fines comerciales.
-Algunos recursos (imágenes/fuentes/audio) podrían ser de terceros y se usan únicamente con fines educativos/demostrativos.
+![Character selection](docs/screenshot-pj-choosing.png)
+![Fight](docs/screenshot-fight.png)
+![Controls menu](docs/controls-menu.png)
+
+---
+
+## 🧭 Code Status
+
+This repository **preserves the original logic** from my first-year OOP final project, with only minimal organization to build and run smoothly today:
+
+* Folder layout (`assets/`, `src/`, `include/`)
+* CMake + VS Code configuration
+* Asset path helper (`Assets.h`)
+* Safe handling of data files (auto-create if missing)
+
+---
+
+
+
+## 🏷️ License / Credits
+
+Academic, non-commercial project.
+Some assets (images/fonts/audio) may be third-party and are used for educational/demo purposes only.
 
