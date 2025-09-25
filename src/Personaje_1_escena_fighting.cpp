@@ -439,8 +439,9 @@ void Personaje_1_escena_fighting::Get_Hit(bool desde_izquierda){
 
 
 Personaje_1_escena_fighting::~Personaje_1_escena_fighting() {
-	delete controles;
-	delete Sprite_Principal;
+        delete controles;
+        // No delete: puntero no propietario (apunta a sprites miembro)
+        Sprite_Principal = nullptr;
 }
 
 FloatRect Personaje_1_escena_fighting::Posicion_Defensa(){

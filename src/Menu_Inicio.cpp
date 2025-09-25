@@ -74,5 +74,6 @@ void Menu_Inicio::Draw(RenderWindow &w){
 }
 
 Menu_Inicio::~Menu_Inicio(){
-	delete menu_sprite_principal;
+        // No delete: puntero no propietario (apunta a un elemento de menu_sprite[])
+        menu_sprite_principal = nullptr;
 }

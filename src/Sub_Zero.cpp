@@ -130,6 +130,7 @@ FloatRect Sub_Zero::Posicion_Ataque(){
 
 
 Sub_Zero::~Sub_Zero(){
-	delete Sub_Zero_pointer_ice_ball_sprite;
+        // No delete: puntero no propietario (apunta a un elemento de Sub_Zero_ice_ball_sprite[])
+        Sub_Zero_pointer_ice_ball_sprite = nullptr;
 
 }
