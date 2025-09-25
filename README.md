@@ -1,7 +1,3 @@
-Here’s a clean, English **README.md** with your screenshots correctly referenced (make sure those files exist at the exact paths and casing shown):
-
----
-
 # The Fighting Game (C++ / SFML)
 
 > Final project for **Object-Oriented Programming** — my first programming course at university.
@@ -127,7 +123,6 @@ This repository **preserves the original logic** from my first-year OOP final pr
 * Safe handling of data files (auto-create if missing)
 
 ---
-
 
 
 ## 🏷️ License / Credits
