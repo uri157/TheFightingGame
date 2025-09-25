@@ -8,6 +8,7 @@
 #include "Escena.h"
 #include <iostream>
 #include "Round.h"
+#include "Assets.h"
 using namespace std;
 
 Fighting_Escena::Fighting_Escena(){
@@ -17,7 +18,7 @@ Fighting_Escena::Fighting_Escena(){
 	menu=new Menu_Pause();
 	
 	//Cartel "Esc to Pause"
-	m_font.loadFromFile("MKtitle1.ttf");
+        m_font.loadFromFile(asset("fonts/MKtitle1.ttf"));
 	Escape_Text.setFont(m_font);
 	Escape_Text.setPosition(30,1020);
 	Escape_Text.setCharacterSize(30);

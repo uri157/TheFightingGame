@@ -5,6 +5,7 @@
 #include "Controles_Player_1.h"
 #include "Controles_Player_2.h"
 #include <iostream>
+#include "Assets.h"
 using namespace std;
 
 
@@ -12,7 +13,7 @@ Personaje_1_escena_fighting::Personaje_1_escena_fighting(int player_1_o_2,string
 	//Nota:Los personajes cargan un monton de sprites y texturas en distintos vectores y lo que se hace es que a travez de un puntero que se va modificando se va mostrando en cada momento el que corresponda
 	//Inicializacion de sprites y texturas del luchador en posicion "de pie"
 	for(int i=0;i<2;i++) { 
-		Pj_standing_texture[i].loadFromFile(nombre_luchador+"_standing_"+to_string(i)+".png");
+		Pj_standing_texture[i].loadFromFile(asset("sprites/"+nombre_luchador+"_standing_"+to_string(i)+".png"));
 		Pj_standing_sprite[i].setTexture(Pj_standing_texture[i]);
 		Pj_standing_sprite[i].setPosition(480,700);
 		Pj_standing_sprite[i].setScale(5,5);
@@ -34,7 +35,7 @@ Personaje_1_escena_fighting::Personaje_1_escena_fighting(int player_1_o_2,string
 	
 	//Inicializacion de sprites y texturas del luchador en accion "caminando"
 	for(int i=0;i<4;i++) { 
-		Pj_walking_texture[i].loadFromFile(nombre_luchador+"_walk_"+to_string(i)+".png");
+		Pj_walking_texture[i].loadFromFile(asset("sprites/"+nombre_luchador+"_walk_"+to_string(i)+".png"));
 		Pj_walking_sprite[i].setTexture(Pj_walking_texture[i]);
 		Pj_walking_sprite[i].setScale(5,5);
 	}
@@ -42,7 +43,7 @@ Personaje_1_escena_fighting::Personaje_1_escena_fighting(int player_1_o_2,string
 	
 	//Inicializacion de sprites y texturas del luchador en accion "atacando"
 	for(int i=0;i<4;i++) { 
-		Pj_attacking_texture[i].loadFromFile(nombre_luchador+"_attack_"+to_string(i)+".png");
+		Pj_attacking_texture[i].loadFromFile(asset("sprites/"+nombre_luchador+"_attack_"+to_string(i)+".png"));
 		Pj_attacking_sprite[i].setTexture(Pj_attacking_texture[i]);
 		Pj_attacking_sprite[i].setScale(5,5);
 	}
@@ -50,21 +51,21 @@ Personaje_1_escena_fighting::Personaje_1_escena_fighting(int player_1_o_2,string
 	
 	//Inicializacion de sprites y texturas del luchador en accion "saltando"
 	for(int i=0;i<2;i++) { 
-		Pj_jumping_texture[i].loadFromFile(nombre_luchador+"_jump_"+to_string(i)+".png");
+		Pj_jumping_texture[i].loadFromFile(asset("sprites/"+nombre_luchador+"_jump_"+to_string(i)+".png"));
 		Pj_jumping_sprite[i].setTexture(Pj_jumping_texture[i]);
 		Pj_jumping_sprite[i].setScale(5,5);
 	}
 	
 	
 	//Inicializacion de sprites y texturas del luchador en accion "final ganador"
-	Pj_win_texture.loadFromFile(nombre_luchador+"_wins.png");
+	Pj_win_texture.loadFromFile(asset("sprites/"+nombre_luchador+"_wins.png"));
 	Pj_win_sprite.setTexture(Pj_win_texture);
 	Pj_win_sprite.setScale(5,5);
 	
 	
 	//Inicializacion de sprites y texturas del luchador en accion "final perdedor"	
 	for(int i=0;i<2;i++) { 
-		Pj_losing_texture[i].loadFromFile(nombre_luchador+"_losing_"+to_string(i)+".png");
+		Pj_losing_texture[i].loadFromFile(asset("sprites/"+nombre_luchador+"_losing_"+to_string(i)+".png"));
 		Pj_losing_sprite[i].setTexture(Pj_losing_texture[i]);
 		Pj_losing_sprite[i].setScale(5,5);
 		Pj_losing_sprite[i].setOrigin(0,-35);
@@ -73,14 +74,14 @@ Personaje_1_escena_fighting::Personaje_1_escena_fighting(int player_1_o_2,string
 	
 	//Inicializacion de sprites y texturas del luchador en accion "Recibir golpe"	
 	for(int i=0;i<4;i++) { 
-		Pj_get_hit_texture[i].loadFromFile(nombre_luchador+"_get_hit_"+to_string(i)+".png");
+		Pj_get_hit_texture[i].loadFromFile(asset("sprites/"+nombre_luchador+"_get_hit_"+to_string(i)+".png"));
 		Pj_get_hit_sprite[i].setTexture(Pj_get_hit_texture[i]);
 		Pj_get_hit_sprite[i].setScale(5,5);
 	}
 	
 	
 	//Efectos de sonido correspondientes a los pasos
-	footstep_effect_soundbuffer.loadFromFile("footstep_sound_effect.wav");
+	footstep_effect_soundbuffer.loadFromFile(asset("audio/music/footstep_sound_effect.wav"));
 	footstep_effect_sound.setBuffer(footstep_effect_soundbuffer);
 	footstep_effect_sound.setVolume(35);
 }
@@ -180,13 +181,13 @@ void Personaje_1_escena_fighting::m_Ejecutar_Fin_Perdedor(){
 }
 
 void Personaje_1_escena_fighting::m_Determinar_Dentro_Limites(){
-	if(Sprite_Principal->getPosition().x>1700){//¿Dentro de los limites del lado derecho?
+	if(Sprite_Principal->getPosition().x>1700){//Dentro de los limites del lado derecho?
 		fuera_de_limites_derecha=true;
 	} else {
 		fuera_de_limites_derecha=false;
 	}
 	
-	if(Sprite_Principal->getPosition().x<0){//¿Dentro de los limites del lado izquierdo?
+	if(Sprite_Principal->getPosition().x<0){//Dentro de los limites del lado izquierdo?
 		fuera_de_limites_izquierda=true;
 	} else {
 		fuera_de_limites_izquierda=false;

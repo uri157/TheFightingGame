@@ -2,14 +2,15 @@
 #include <SFML/Graphics/Sprite.hpp>
 #include <SFML/Graphics/Texture.hpp>
 #include <SFML/Graphics/RenderWindow.hpp>
+#include "Assets.h"
 using namespace std;
 using namespace sf;
 
 Battleground::Battleground(string battleground_name) {//recibe un string con el nombre del mapa requerido
-	battleground_textura.loadFromFile(battleground_name);
+	battleground_textura.loadFromFile(asset("backgrounds/" + battleground_name));
 	battleground_sprite.setTexture(battleground_textura);
 	battleground_sprite.setPosition(0, 0);
-	music.openFromFile("Battleground_music_0.wav");
+	music.openFromFile(asset("audio/music/Battleground_music_0.wav"));
 	music.setVolume(25);
 }
 

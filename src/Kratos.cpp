@@ -9,18 +9,19 @@
 #include "Controles_Player_1.h"
 #include <SFML/System/Clock.hpp>
 #include <iostream>
+#include "Assets.h"
 using namespace std;
 using namespace sf;
 
-
-Kratos::Kratos(int player_1_o_2):Personaje_1_escena_fighting(player_1_o_2,"Kratos") {//Recibe una variable que le indica si es Player 1 o Player 2
+// TODO: Renombrar los sprites de Kratos a "Kratos_*" para alinear el casing con el resto.
+Kratos::Kratos(int player_1_o_2):Personaje_1_escena_fighting(player_1_o_2,"kratos") {//Recibe una variable que le indica si es Player 1 o Player 2
 
 //Efectos de sonido correspondientes al luchador
-	attacking_effect_soundbuffer.loadFromFile("Kratos_attack_sound_effect.wav");
+        attacking_effect_soundbuffer.loadFromFile(asset("audio/music/Kratos_attack_sound_effect.wav"));
 	attacking_effect_sound.setBuffer(attacking_effect_soundbuffer);
-	jumping_effect_soundbuffer.loadFromFile("Kratos_jumping_sound_effect.wav");
+        jumping_effect_soundbuffer.loadFromFile(asset("audio/music/Kratos_jumping_sound_effect.wav"));
 	jumping_effect_sound.setBuffer(jumping_effect_soundbuffer);
-	get_hit_effect_soundbuffer.loadFromFile("Kratos_get_hit_sound_effect.wav");
+        get_hit_effect_soundbuffer.loadFromFile(asset("audio/music/Kratos_get_hit_sound_effect.wav"));
 	get_hit_effect_sound.setBuffer(get_hit_effect_soundbuffer);
 
 	

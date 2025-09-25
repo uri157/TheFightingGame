@@ -5,6 +5,7 @@
 #include "Fighting_Escena.h"
 #include "Seleccion_De_Personaje_Escena.h"
 #include "Menu_options.h"
+#include "Assets.h"
 
 
 using namespace std;
@@ -12,8 +13,8 @@ using namespace sf;
 
 Menu_Inicio::Menu_Inicio(){
 	cantidad_de_imagenes=3;
-	for(int i=0;i<cantidad_de_imagenes;i++)  { 
-		menu_textura[i].loadFromFile("Menu_"+to_string(i)+".png");
+        for(int i=0;i<cantidad_de_imagenes;i++)  {
+                menu_textura[i].loadFromFile(asset("sprites/Menu_"+to_string(i)+".png"));
 		menu_sprite[i].setTexture(menu_textura[i]);
 		menu_sprite[i].setPosition(700,i+200);
 	};
